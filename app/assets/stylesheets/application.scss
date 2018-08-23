@@ -13,4 +13,22 @@
  *= require_tree .
  *= require_self
  */
- @import "materialize";
+
+@import "materialize";
+.container {
+    width: 90%;
+}
+
+.sidenav {
+    width: 13.33rem;
+}
+
+main {
+    padding-left: 13.33rem;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 0;
+    }
+}
