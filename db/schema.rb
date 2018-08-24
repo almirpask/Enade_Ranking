@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_24_003119) do
+ActiveRecord::Schema.define(version: 2018_08_24_010147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2018_08_24_003119) do
     t.bigint "course_id"
     t.bigint "institution_id"
     t.decimal "course_score", precision: 5, scale: 2, default: "0.0"
-    t.decimal "student_score", precision: 5, scale: 2, default: "0.0"
+    t.decimal "student_core", precision: 5, scale: 2, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_rankings_on_course_id"

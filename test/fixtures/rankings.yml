@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  references: 
-  references: 
+  course: one
+  insitution: one
+  course_score: 9.99
+  student_core: 9.99
 
 two:
-  references: 
-  references: 
+  course: two
+  insitution: two
+  course_score: 9.99
+  student_core: 9.99
