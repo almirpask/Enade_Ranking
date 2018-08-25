@@ -2,7 +2,6 @@
   <% if institution.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(institution.errors.count, "error") %> prohibited this institution from being saved:</h2>
-
       <ul>
       <% institution.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,18 +9,17 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+ 
+  <div class="row">
+    <div id="insitution_form"></div>
   </div>
-
-  <div class="field">
-    <%= form.label :general_note %>
-    <%= form.text_field :general_note %>
+  <div class="divider"></div>
+  <div class="row">
+    <div class="actions">
+      <%= form.submit %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
 <% end %>
+
+<%= javascript_pack_tag 'institutions/entry'%>
