@@ -22,6 +22,9 @@ export default class InstitutionContainer extends Component {
     handleSubmit(e){
         e.preventDefault();
         console.log(this.state.data)
+        const csrfToken = document.querySelector('[name="csrf-token"]').content;
+        axios.defaults.headers.common['X-CSRF-Token'] = csrfToken;
+        
         axios.post('/institutions.json', this.state.data)
     }
     handleData(data){        
