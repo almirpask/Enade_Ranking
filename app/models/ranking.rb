@@ -1,4 +1,4 @@
 class Ranking < ApplicationRecord
   belongs_to :course
-  belongs_to :insitution
+  belongs_to :institution
 end
