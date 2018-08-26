@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Evaluation from './Evaluation';
-import FooterModal from '../common/FooterModal';
+import InstitutionModal from './InstitutionModal';
 import InstitutionForm from "./InstitutionForm";
 import EvaluationList from "./EvaluationList";
 import axios from 'axios';
@@ -170,7 +170,7 @@ export default class InstitutionContainer extends Component {
                         removeEvaluation={this.removeEvaluation}
                     />
                 }
-                <FooterModal
+                <InstitutionModal
                     course={this.state.current_course}
                     courses={this.state.courses}
                     handleCourse={this.handleCourse}
