@@ -4,3 +4,15 @@
   <li><%= link_to  "Courses", courses_path %></li>
 </ul>
 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+<script>
+  document.addEventListener('turbolinks:load', function() {
+    M.Sidenav.init(document.getElementById('slide-out'));
+  });
+  document.addEventListener('turbolinks:before-visit', function() {
+    instance = M.Sidenav.getInstance(document.getElementById('slide-out'));
+    if (instance){
+      instance.destroy();
+    }
+  });
+</script>
