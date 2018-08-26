@@ -1,6 +1,5 @@
 class InstitutionsController < ApplicationController
   before_action :set_institution, only: [:show, :edit, :update, :destroy]
-
   # GET /institutions
   # GET /institutions.json
   def index
@@ -25,11 +24,13 @@ class InstitutionsController < ApplicationController
   # POST /institutions.json
   def create
     @institution = Institution.new(institution_params)
-
+    
     respond_to do |format|
       if @institution.save
+        flash[:notice] = "Institution #{@institution.name} was created!."
         format.html { redirect_to @institution, notice: 'Institution was successfully created.' }
         format.json { render :show, status: :created, location: @institution }
+
       else
         format.html { render :new }
         format.json { render json: @institution.errors, status: :unprocessable_entity }
@@ -69,6 +70,15 @@ class InstitutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def institution_params
-      params.require(:institution).permit(:name, :general_note)
+      params.require(:institution).permit(
+        :name, 
+        :general_note,
+        rankings_attributes: [
+          :id,
+          :course_id,
+          :institution_id,
+          :course_score,
+          :student_score
+        ])
     end
 end
