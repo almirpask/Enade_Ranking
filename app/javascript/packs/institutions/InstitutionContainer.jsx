@@ -6,7 +6,7 @@ import EvaluationList from "./EvaluationList";
 import axios from 'axios';
 import { routes } from '../routes';
 
-let counter = 0;
+let counter = 1;
 const default_course = {
     course_name: null,
     course_score: null,
@@ -42,30 +42,52 @@ export default class InstitutionContainer extends Component {
         this.addEvalutation = this.addEvalutation.bind(this);
         this.setEvaluation = this.setEvaluation.bind(this);
     }
-    // setEvaluation(evaluation){
-    //     this.setState({ evaluations: this.state.evaluations.concat(evaluation) })
-    // }
     componentDidMount(){
         axios.get('/courses.json').then(resp => {
             this.setState({ courses: resp.data })
         }).then(()=>{
+            if(this.props.institutionId){
+                axios.get(`/institutions/${this.props.institutionId}.json`).then( resp => {
+                    console.log(resp.data)
+                    this.setState({data: { ...this.state.data, ...resp.data}, evaluations: resp.data.rankings.map(rank => {
+                        let course = this.state.courses.find( course => {
+                            return course.id == rank.course_id
+                        })
+                        return {
+                            ...rank,
+                            course_name: course.name,
+                            eid: counter++
+                        }
+                    })})
+                })
+            }
             M.FormSelect.init(document.getElementById('course_id'));
         })
     }
     handleSubmit(){
         event.preventDefault();
         const csrfToken = document.querySelector('[name="csrf-token"]').content;
+
         axios.defaults.headers.common['X-CSRF-Token'] = csrfToken;
         let data = {
             name: this.state.data.name,
             general_note: this.state.data.general_note,
             rankings_attributes: this.state.evaluations
         }
-        axios.post('/institutions.json', data).then( resp => {
-            if (resp.status == 201) {
-                window.location= "/institutions"
-            }
-        })
+
+        if(this.props.institutionId){
+            axios.put(`/institutions/${this.props.institutionId}.json`, data).then( resp => {
+                if (resp.status == 200) {
+                    window.location= "/institutions"
+                }
+            })
+        } else {
+            axios.post('/institutions.json', data).then( resp => {
+                if (resp.status == 201) {
+                    window.location= "/institutions"
+                }
+            })
+        }
     }
     handleData(data){
         this.setState({
@@ -106,8 +128,15 @@ export default class InstitutionContainer extends Component {
         })
     }
     removeEvaluation(id){ 
-        let evaluations = this.state.evaluations.filter(evaluation => {
-            return evaluation.eid != id
+        let evaluations = this.state.evaluations.map(evaluation => {
+            if (evaluation.eid == id){
+                return {
+                    ...evaluation, 
+                    _destroy: true
+                }
+            } else {
+                return evaluation
+            }
         })
         this.setState({ 
             evaluations: evaluations 
@@ -148,7 +177,7 @@ export default class InstitutionContainer extends Component {
                     addEvalutation={this.addEvalutation}
                     updateEvaluation={this.updateEvaluation}
                 />
-                <button className="btn" type="button" onClick={() => this.handleSubmit()}>Create</button>
+                <button className="btn" type="button" onClick={() => this.handleSubmit()}>{this.props.institutionId? 'Edit': 'Create'}</button>
             </div>
             
         )

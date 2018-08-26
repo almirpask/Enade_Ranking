@@ -28,7 +28,6 @@ export default class FooterModal extends Component {
                                         )
                                     })}
                                 </select>
-                                {/* <label>Courses Select</label> */}
                             </div>
                             <div className="input-field col s3 m3">
                                 <input

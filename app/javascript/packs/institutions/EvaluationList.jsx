@@ -20,7 +20,8 @@ export default class InstitutionList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.evaluations.map(evaluation => {
+                        {this.props.evaluations.filter(evaluations => !evaluations._destroy).map(evaluation => {
+                        
                             return (
                                 <tr key={evaluation.eid}>
                                     <td>{`${evaluation.course_name}`}</td>

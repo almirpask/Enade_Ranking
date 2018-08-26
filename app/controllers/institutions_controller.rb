@@ -9,6 +9,7 @@ class InstitutionsController < ApplicationController
   # GET /institutions/1
   # GET /institutions/1.json
   def show
+    render json: @institution
   end
 
   # GET /institutions/new
@@ -78,7 +79,8 @@ class InstitutionsController < ApplicationController
           :course_id,
           :institution_id,
           :course_score,
-          :student_score
+          :student_score,
+          :_destroy
         ])
     end
 end

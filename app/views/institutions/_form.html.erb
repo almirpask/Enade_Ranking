@@ -13,13 +13,11 @@
   <div class="row">
     <div id="insitution_form"></div>
   </div>
-  <div class="divider"></div>
-  <div class="row">
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  </div>
   
 <% end %>
+
+<script>
+    window.institutionId = <%== institution.id.to_json %>;
+</script>
 
 <%= javascript_pack_tag 'institutions/entry'%>
