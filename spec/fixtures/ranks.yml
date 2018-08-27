@@ -1,0 +1,26 @@
+evaluation_anhanguera_mathematics:
+  id: 1
+  course_id: 1
+  institution_id: 1
+  course_score: 5
+  student_score: 8
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+evaluation_unip_mathematics:
+  id: 2
+  course_id: 1
+  institution_id: 2
+  course_score: 7
+  student_score: 9
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+evaluation_unip_spanish:
+  id: 3
+  course_id: 2
+  institution_id: 2
+  course_score: 8
+  student_score: 9
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>

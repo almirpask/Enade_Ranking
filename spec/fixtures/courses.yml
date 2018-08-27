@@ -1,0 +1,17 @@
+mathematics:
+  id: 1
+  name: 'Mathematics'
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+spanish:
+  id: 2
+  name: 'Spanish'
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+english:
+  id: 3
+  name: 'English'
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>

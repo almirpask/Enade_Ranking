@@ -1,0 +1,13 @@
+anhanguera:
+  id: 1
+  name: 'anhanguera'
+  score: 8
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
+
+unip:
+  id: 2
+  name: 'unip'
+  score: 9
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>
