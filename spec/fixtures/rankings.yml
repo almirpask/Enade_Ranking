@@ -1,4 +1,4 @@
-evaluation_anhanguera_mathematics:
+ranking_anhanguera_mathematics:
   id: 1
   course_id: 1
   institution_id: 1
@@ -7,7 +7,7 @@ evaluation_anhanguera_mathematics:
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
 
-evaluation_unip_mathematics:
+ranking_unip_mathematics:
   id: 2
   course_id: 1
   institution_id: 2
@@ -16,7 +16,7 @@ evaluation_unip_mathematics:
   created_at: <%= Time.current %>
   updated_at: <%= Time.current %>
 
-evaluation_unip_spanish:
+ranking_unip_spanish:
   id: 3
   course_id: 2
   institution_id: 2
