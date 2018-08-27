@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
   resources :rankings
   resources :courses
-  root to: 'home#index'
   resources :institutions
 end
