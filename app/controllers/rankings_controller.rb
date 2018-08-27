@@ -1,7 +1,13 @@
 class RankingsController < ApplicationController 
     def index
-        @rankings = 
-            Ranking.all
+        @rankings = rankings_query
+        render json: @rankings
+    end
+
+    private
+    
+    def rankings_query
+        RankingsQuery.new.relation
             .filter(
                 params.slice(
                     :institution_id,
@@ -13,6 +19,6 @@ class RankingsController < ApplicationController
             ).includes(:course, :institution)
             .joins(:institution)
             .order(Institution.arel_table[:general_note].desc)
-        render json: @rankings
     end
+    
 end
