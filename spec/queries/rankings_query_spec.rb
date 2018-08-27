@@ -1,18 +1,18 @@
 require 'rails_helper'
 
-describe RankingsQuery do
+RSpec.describe RankingsQuery do
   fixtures :rankings
 
-  subject { RankingsQuery.new.relation }
+  
+  subject { described_class.new.relation }
 
   let!(:ranking_anhanguera_mathematics) { rankings(:ranking_anhanguera_mathematics) }
   let!(:ranking_unip_mathematics) { rankings(:ranking_unip_mathematics) }
   let!(:ranking_unip_spanish) { rankings(:ranking_unip_spanish) }
+  
 
-  describe '#institution_score_desc' do
-    
+  describe '#institution_score_desc' do    
     it 'should return rankings ordered by institution score desc' do
-      # byebug
       expect(subject.institution_score_desc).to eq([
         ranking_unip_mathematics,
         ranking_unip_spanish,
@@ -41,8 +41,9 @@ describe RankingsQuery do
   end
 
   describe '#institution_score' do
-    it 'should return evaluations with institution score = 9' do
-      expect(subject.institution_score(9)).to contain_exactly(ranking_unip_spanish, ranking_unip_mathematics)
+    it 'should return evaluations with institution general note = 9' do
+      # byebug
+      expect(subject.institution_general_note(9)).to contain_exactly(ranking_unip_spanish, ranking_unip_mathematics)
     end
   end
 
@@ -53,7 +54,7 @@ describe RankingsQuery do
   end
 
   describe '#student_score' do
-    it 'should return evaluations with students average score = 9' do
+    it 'should return evaluations with students average score = 9' do      
       expect(subject.student_score(9)).to contain_exactly(ranking_unip_mathematics, ranking_unip_spanish)
     end
   end
