@@ -7,7 +7,7 @@ RSpec.describe Course, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_many(:rankings).dependent(:restrict_with_exception) }
+    it { is_expected.to have_many(:rankings).dependent(:destroy) }
     it { is_expected.to have_many(:institutions).through(:rankings) }
   end
 end
