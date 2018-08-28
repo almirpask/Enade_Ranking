@@ -12,7 +12,7 @@ Run project:
 
 ```sh
 # Start rails server
-$  foreman rails s
+$ rails s
 ```
 
 Run tests:
