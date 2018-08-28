@@ -1,24 +1,26 @@
-# README
+# Get started
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Installation:
+```sh
+$ bundle install
+$ yarn install
+$ rails db:create
+$ rails db:migrate
+```
 
-Things you may want to cover:
+Run project:
 
-* Ruby version
+```sh
+# Start rails server
+$  foreman rails s
+```
 
-* System dependencies
+Run tests:
 
-* Configuration
+```sh
+# Make sure you have the PhantomJS installed. To install, read the capybara documentation: https://github.com/teampoltergeist/poltergeist#installing-phantomjs
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+$ rails db:create RAILS_ENV=test
+$ rails db:migrate RAILS_ENV=test
+$ rspec spec/
+```
