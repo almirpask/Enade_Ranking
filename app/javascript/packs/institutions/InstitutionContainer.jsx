@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import Evaluation from './Evaluation';
 import InstitutionModal from './InstitutionModal';
 import InstitutionForm from "./InstitutionForm";
 import EvaluationList from "./EvaluationList";
 import axios from 'axios';
-import { routes } from '../routes';
 
 let counter = 1;
 const default_course = {
@@ -148,6 +146,10 @@ export default class InstitutionContainer extends Component {
         this.setState({ current_course: evaluation })
         document.getElementById('modal_footer').M_Modal.open()
     }
+    openModal(){
+        this.setState({ current_course:  default_course})
+        document.getElementById('modal_footer').M_Modal.open()
+    }
     render(){
         return (
             <div>
@@ -160,7 +162,7 @@ export default class InstitutionContainer extends Component {
                 <div className="row">
                     <br/>
                     <div className="col m12">
-                        <a className="waves-effect waves-light btn modal-trigger right" href="#modal_footer" onClick={() => this.setState({ current_course:  default_course})}> Add course</a>
+                        <a className="waves-effect waves-light btn right" onClick={() => this.openModal()}> Add course</a>
                     </div>
                 </div>
                 {this.state.evaluations.length > 0 &&
